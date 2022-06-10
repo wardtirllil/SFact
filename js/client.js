@@ -3,6 +3,7 @@ $(document).ready(function(){
     Insert_record_cl();
     delete_record_cl();
     get_record();
+    update_record_cl();
    
 })
  
@@ -98,25 +99,62 @@ function get_record()
     $(document).on('click','#btn_edit',function()
     {
         var id = $(this).attr('data-id');
-        //console.log(ID);
-        $('#update').modal('show');
+        //console.log(id);
+        
+                   
+        
         $.ajax(
             {
                 url: 'client_get_data.php',
                 method: 'post',
-                data:{ID:id},
+                data:{id:id},
                 dataType: 'JSON',
                 success: function(data)
                 {
-                    console.log(data[0]);
-                   //$('#Up_User_ID').val(data[0]);
-                   //$('#Up_Name').val(data[1]);
-                  // $('#Up_Email').val(data[2]);
-                  // $('#Up_Phone').val(data[3]);
-                  // $('#Up_Adress').val(data[4]);
-                 
-                   
+                    //console.log(data)
+                   $("#Up_User_ID").val(data[0]);
+                   $("#Up_Name").val(data[1]);
+                   $("#Up_Email").val(data[2]);
+                  $("#Up_Phone").val(data[3]);
+                  $("#Up_Adress").val(data[4]);
+                  $("#update").modal("show");
                 }
                 
             })
     })}
+
+    
+    function update_record_cl()
+{
+    
+    $(document).on('click','#btn_update',function()
+    {
+        var UpdateID = $('#Up_User_ID').val();
+        var UpdateName = $('#Up_Name').val();
+        var UpdateEmail = $('#Up_Email').val();
+        var UpdatePhone = $('#Up_Phone').val();
+        var UpdateAdress = $('#Up_Adress').val();
+
+        if(UpdateName=="" || UpdateEmail==""|| UpdatePhone==""|| UpdateAdress=="")
+        {
+            $('#up-message').html('Remplire les champs');
+            $('#update').modal('show');
+        }
+        else
+        {
+            $.ajax(
+                {
+                    url: 'client_update.php',
+                    method: 'post',
+                    data:{C_ID:UpdateID,C_Name:UpdateName,C_Email:UpdateEmail,C_Phone:UpdatePhone,C_Adress:UpdateAdress},
+                    success: function(data)
+                    {
+                        $('#up-message').html(data);
+                        $('#update').modal('show');
+                        view_record();
+                    }
+                })
+        }
+        
+    })
+}

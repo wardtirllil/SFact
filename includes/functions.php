@@ -76,24 +76,48 @@
     }
 
     // Get Particular Record
-    function get_record()
+    function get_record_cl()
     {
-        echo 'alert("test")';
+        
         global $con;
-        $ID = $_POST['id'];
-        $query = "'SELECT * FROM client WHERE id ='$ID";
+        $id = $_POST['id'];
+        $query = "SELECT * FROM client WHERE id =" . $id;
         $result = mysqli_query($con,$query);
 
         while($row=mysqli_fetch_assoc($result))
         {
-            $User_data = "";
-            $User_data[0]=$row['id'];
-            $User_data[1]=$row['nom'];
-            $User_data[2]=$row['email'];
-            $User_data[3]=$row['telephone'];
-            $User_data[4]=$row['adresse'];
+            $Client_data = array();
+            $Client_data[0]=$row['id'];
+            $Client_data[1]=$row['nom'];
+            $Client_data[2]=$row['email'];
+            $Client_data[3]=$row['telephone'];
+            $Client_data[4]=$row['adresse'];
         }
-        echo json_encode($User_data);
+        echo json_encode($Client_data);
     }
+
+
+
+// Update Function
+function update_value_cl()
+{
+    global $con;
+    $Update_ID = $_POST['C_ID'];
+    $Update_Name =$_POST['C_Name'];
+    $Update_Email = $_POST['C_Email'];
+    $Update_Phone = $_POST['C_Phone'];
+    $Update_Adress = $_POST['C_Adress'];
+
+    $query = "update client set nom='$Update_Name', email='$Update_Email', telephone='$Update_Phone', adresse='$Update_Adress' where ID='$Update_ID '";
+    $result = mysqli_query($con,$query);
+    if($result)
+    {
+        echo ' Your Record Has Been Updated ';
+    }
+    else
+    {
+        echo ' Please Check Your Query ';
+    }
+}
 
     ?>
