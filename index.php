@@ -62,10 +62,16 @@
                 <div class="stat-card">
                     <div class="stat-card__content">
                         <p class="text-uppercase mb-1 text-muted">Produits</p>
-                        <h2>12</h2>
+                        <h2>
+                        <?php
+                        $sql="select count(*) as total from produit";
+                        $result=mysqli_query($con,$sql);
+                        $data=mysqli_fetch_assoc($result);
+                         echo $data['total'];?>
+                        </h2>
                         <div>
-                            <span class="text-success font-weight-bold mr-1"><i class="fa fa-arrow-up"></i> +5%</span>
-                            <span class="text-muted">vs last 28 days</span>
+                            <span class="text-success font-weight-bold mr-1"></span>
+                            <span class="text-muted">Totale Produits</span>
                         </div>
                     </div>
                     <div class="stat-card__icon stat-card__icon--success">

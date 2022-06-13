@@ -1,4 +1,4 @@
 <?php 
     require_once('includes/functions.php');
-    InsertRecord();
+    delete_record_pd();
 ?>

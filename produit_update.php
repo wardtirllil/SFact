@@ -1,4 +1,4 @@
 <?php 
     require_once('includes/functions.php');
-    delete_record();
+    update_value_pd();
 ?>

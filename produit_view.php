@@ -1,4 +1,4 @@
 <?php 
     require_once('includes/functions.php');
-    display_record();
+    display_record_pd();
 ?>

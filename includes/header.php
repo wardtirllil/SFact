@@ -35,7 +35,7 @@
           <a class="nav-link" href="clients.php">Clients</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Produits</a>
+          <a class="nav-link" href="Produits.php" tabindex="-1" >Produits</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Categotie</a>
