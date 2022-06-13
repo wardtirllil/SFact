@@ -19,7 +19,7 @@
  
     <title>Gestion factures</title>
 </head>
-
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" ><b>DMCOM</b></a>
